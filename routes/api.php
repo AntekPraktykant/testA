@@ -25,6 +25,8 @@ Route::get('/beers/', function () {
 });
 //how to check if given filed exists in db?
 Route::get('/beers/sortby/{field}', function ($field) {
+    abort_unless(in_array($field, array_keys(Beer::first()->attributesToArray())), 400, 'Field does not exist');
+
     return Beer::orderBy($field)->paginate(10);
 });
 
