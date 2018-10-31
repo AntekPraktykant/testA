@@ -11,7 +11,7 @@ use App\Brewer;
 
 class BeersController extends Controller
 {
-    public function getBeers() {
+    public function getBeers($console) {
         try{
 //get JSON
             $beers = Cache::remember('beers', 60, function () {
@@ -54,12 +54,12 @@ class BeersController extends Controller
 
             DB::table('beers')->insert($uniqueBeers);
 
-            $this->info('All brewers fetched. (' . count($uniqueBreweries) . ' in total).');
-            $this->info('All beers fetched. (' . count($uniqueBeers) . ' in total).');
+            $console->info('All brewers fetched. (' . count($uniqueBreweries) . ' in total).');
+            $console->info('All beers fetched. (' . count($uniqueBeers) . ' in total).');
         }
 
         catch (exception $e) {
-            $this->info ("Unable to connect to remote URI ", $e->getMessage());
+            $console->info ("Unable to connect to remote URI ", $e->getMessage());
         }
 
     }//)->describe('Fetch Beers and Brewers from remote API');

@@ -75,7 +75,6 @@ Artisan::command('get:brewers', function () {
 
 })->describe('Fetch Beers and Brewers from remote API');
 
-Artisan::command('get:beers', function (BeersController $BC){
-    return $BC->getBeers();
-
+Artisan::command('get:beers', function (BeersController $BC) {
+    return $BC->getBeers($this);
 });
