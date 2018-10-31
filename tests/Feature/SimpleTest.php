@@ -6,8 +6,10 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class simpleTests extends TestCase
+class SimpleTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic test example.
      *
@@ -19,8 +21,8 @@ class simpleTests extends TestCase
     }
 
     public function testSingleBeerSelection()
-{
-    $response = $this->call('GET', '/api/beers/beer_id/127');
-    $this->assertEquals(200, $response->status());
-}
+    {
+        $response = $this->call('GET', '/api/beers/beer_id/127');
+        $this->assertEquals(200, $response->status());
+    }
 }
