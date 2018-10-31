@@ -19,6 +19,7 @@ class CreateBeersTable extends Migration
             $table->string('name');
             $table->string('size');
             $table->double('price');
+            $table->string('price_per_liter');
             $table->integer('beer_id');
             $table->string('image_url');
             $table->string('category');
