@@ -35,7 +35,15 @@ Route::get('/beers/{field}/{fieldValue}', function ($field, $fieldValue) {
 });
 
 Route::get('/beers/price/{priceFrom}/{priceTo}', function ($priceFrom, $priceTo) {
-	if ((double)$priceFrom > (double)$priceTo) return "Please enter priceFrom > priceTo";
+    // $q = Beer::where('price', '>=', $priceFrom);
+
+    // if (/**/) {
+    //     $q->where('price', '<=', $priceTo)
+    // }
+
+    // return $q->paginate(25);
+
+    if ((double)$priceFrom > (double)$priceTo) return "Please enter priceFrom > priceTo";
     return Beer::where('price', '>=', $priceFrom)->where('price', '<=', $priceTo)->paginate(25);
 });
 
